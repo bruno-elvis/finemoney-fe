@@ -20,7 +20,11 @@ export function Button({ className, isLoading, disabled, children, variant, ...p
       )}
     >
       {!isLoading && children}
+
       {/* {isLoading && <Spinner className="w-6 h-6" />} */}
+
     </button>
+
   );
+  
 }
