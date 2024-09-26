@@ -5,7 +5,7 @@ import { useLoginController } from './useLoginController';
 
 
 export function Login() {
-  const { handleSubmit, register, errors, /*isLoading*/ } = useLoginController();
+  const { handleSubmit, register, errors, isLoading } = useLoginController();
 
   return (
     <>
@@ -48,7 +48,7 @@ export function Login() {
 
         />
 
-        <Button type="submit" className="mt-2" /*isLoading={ isLoading }*/ >
+        <Button type="submit" className="mt-2" isLoading={ isLoading } >
           Entrar
 
         </Button>

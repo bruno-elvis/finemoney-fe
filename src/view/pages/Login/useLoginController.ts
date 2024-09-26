@@ -3,10 +3,10 @@ import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { toast } from 'react-hot-toast';
 
-// import { useMutation } from '@tanstack/react-query';
+import { useMutation } from '@tanstack/react-query';
 // import { useAuth } from '../../../app/hooks/useAuth';
-// import { authService } from '../../../app/services/authService';
-// import { SigninParams } from '../../../app/services/authService/signin';
+import { authService } from '../../../app/services/authService';
+import { SigninParams } from '../../../app/services/authService/signin';
 
 
 const schema = z.object({
@@ -23,33 +23,33 @@ export function useLoginController() {
 
   });
 
-  // const { mutateAsync, isLoading } = useMutation({
-  //   mutationFn: async (data: SigninParams) => {
-  //     return authService.signin(data);
+  const { mutateAsync, isLoading } = useMutation({
+    mutationFn: async (data: SigninParams) => {
+      return authService.signin(data);
 
-  //   },
-
-  // });
-
-  // const { signin } = useAuth();
-
-  const handleSubmit = hookFormSubmit(async (data) => {
-    console.log(data);
-
-    toast.error('Credenciais inválidas!');
-    
-    // try {
-    //   const { accessToken } = await mutateAsync(data);
-
-    //   signin(accessToken);
-
-    // } catch {
-    //   toast.error('Credenciais inválidas!');
-
-    // };
+    },
 
   });
 
-  return { handleSubmit, register, errors, /*isLoading*/ };
+  // const { signedIn } = useAuth();
+
+  const handleSubmit = hookFormSubmit(async (data) => {
+    try {
+      const { accessToken } = await mutateAsync(data);
+
+      console.log(accessToken);
+
+      toast.success('Login efetuado com sucesso!')
+
+      // signin(accessToken);
+
+    } catch {
+      toast.error('Credenciais inválidas!');
+
+    };
+
+  });
+
+  return { handleSubmit, register, errors, isLoading };
 
 }

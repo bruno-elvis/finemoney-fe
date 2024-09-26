@@ -5,7 +5,7 @@ import { useRegisterController } from "./useRegisterController";
 
 
 export function Register() {
-  const { errors, handleSubmit, register, /*isLoading*/ } = useRegisterController();
+  const { errors, handleSubmit, register, isLoading } = useRegisterController();
 
   return (
     <>
@@ -28,7 +28,7 @@ export function Register() {
         </p>
       </header>
 
-      <form onSubmit={handleSubmit} className="mt-[60px] flex flex-col gap-4" >
+      <form onSubmit={ handleSubmit } className="mt-[60px] flex flex-col gap-4" >
         <Input
           placeholder="Nome"
           error={errors.name?.message}
@@ -52,7 +52,7 @@ export function Register() {
 
         />
 
-        <Button type="submit" className="mt-2" /*isLoading={ isLoading }*/ >
+        <Button type="submit" className="mt-2" isLoading={ isLoading } >
           Criar conta
 
         </Button>
