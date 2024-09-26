@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { createContext, useCallback, useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
-// import { LaunchScreen } from "../../view/components/LaunchScreen";
+import { LaunchScreen } from "../../view/components/LaunchScreen";
 import { localStorageKeys } from "../config/localStorageKeys";
 import { usersService } from "../services/usersService";
 import { User } from "../entities/User";
@@ -61,7 +61,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   return (
     <AuthContext.Provider value={{ signedIn: isSuccess && signedIn, user: data, signin, signout }}>
-      {/* <LaunchScreen isLoading={isFetching} /> */}
+      <LaunchScreen isLoading={ isFetching } />
 
       {!isFetching && children}
 
